@@ -37,7 +37,7 @@ pipeline {
   agent {
     // this image provides everything needed to run Cypress
     docker {
-      image 'cismet/cypress-base-10-with-jenkins-user'
+      image 'cismet/cypress-base-10-with-jenkins-user:1.0'
 
     }
   }
@@ -52,8 +52,9 @@ pipeline {
         echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
         // sh 'npm ci'
         // sh 'export HOME=/var/jenkins_home/'
-        sh 'yarn install --frozen-lockfile'
-        //sh 'npm run cy:verify'
+        sh 'export CYPRESS_CACHE_FOLDER=cache/Cypress'
+        sh 'yarn install --frozen-lockfile'       
+        sh 'yarn run cy:verify'
       }
     }
     stage('run Cypress tests') {
