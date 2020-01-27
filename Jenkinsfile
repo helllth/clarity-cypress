@@ -49,14 +49,15 @@ pipeline {
         // on local Jenkins machine (assuming port 8080) see
         // http://localhost:8080/pipeline-syntax/globals#env
         echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
-        sh 'npm ci'
+        // sh 'npm ci'
+        sh 'yarn install --frozen-lockfile'
         //sh 'npm run cy:verify'
       }
     }
     stage('run Cypress tests') {
       steps {
         echo "Running build ${env.BUILD_ID}"
-        sh "npm run ci_cy"
+        sh "yarn run ci_cy"
       }
     }
   }
