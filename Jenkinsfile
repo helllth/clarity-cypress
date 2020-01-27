@@ -54,13 +54,13 @@ pipeline {
       }
     }
 
-    stage('start local server') {
-      steps {
-        // start local server in the background
-        // we will shut it down in "post" command block
-        //sh 'nohup npm run start:ci &'
-      }
-    }
+    // stage('start local server') {
+    //   steps {
+    //     // start local server in the background
+    //     // we will shut it down in "post" command block
+    //     //sh 'nohup npm run start:ci &'
+    //   }
+    // }
 
     // this stage runs end-to-end tests, and each agent uses the workspace
     // from the previous stage
@@ -77,10 +77,10 @@ pipeline {
       }
 
       // https://jenkins.io/doc/book/pipeline/syntax/#parallel
-      parallel {
+      // parallel {
         // start several test jobs in parallel, and they allnpm instzall
         // will use Cypress Dashboard to load balance any found spec files
-        stage('tester A') {
+        stage('run Cypress tests') {
           steps {
             echo "Running build ${env.BUILD_ID}"
             sh "npm run ci_cy"
@@ -94,7 +94,7 @@ pipeline {
         //     sh "npm run e2e:record:parallel"
         //   }
         // }
-      }
+      // }
 
     }
   }
