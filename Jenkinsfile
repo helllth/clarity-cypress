@@ -50,7 +50,7 @@ pipeline {
         // http://localhost:8080/pipeline-syntax/globals#env
         echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
         sh 'npm ci'
-        sh 'npm run cy:verify'
+        //sh 'npm run cy:verify'
       }
     }
 
@@ -58,7 +58,7 @@ pipeline {
       steps {
         // start local server in the background
         // we will shut it down in "post" command block
-        sh 'nohup npm run start:ci &'
+        //sh 'nohup npm run start:ci &'
       }
     }
 
@@ -78,22 +78,22 @@ pipeline {
 
       // https://jenkins.io/doc/book/pipeline/syntax/#parallel
       parallel {
-        // start several test jobs in parallel, and they all
+        // start several test jobs in parallel, and they allnpm instzall
         // will use Cypress Dashboard to load balance any found spec files
         stage('tester A') {
           steps {
             echo "Running build ${env.BUILD_ID}"
-            sh "npm run e2e:record:parallel"
+            sh "npm run ci_cy"
           }
         }
 
         // second tester runs the same command
-        stage('tester B') {
-          steps {
-            echo "Running build ${env.BUILD_ID}"
-            sh "npm run e2e:record:parallel"
-          }
-        }
+        // stage('tester B') {
+        //   steps {
+        //     echo "Running build ${env.BUILD_ID}"
+        //     sh "npm run e2e:record:parallel"
+        //   }
+        // }
       }
 
     }
@@ -102,8 +102,8 @@ pipeline {
   post {
     // shutdown the server running in the background
     always {
-      echo 'Stopping local server'
-      sh 'pkill -f http-server'
+      echo 'Always post step'
+      echo 'nothibng to do for now'
     }
   }
 }

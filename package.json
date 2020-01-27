@@ -15,7 +15,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cy": "$(npm bin)/cypress open"
+    "cy": "$(npm bin)/cypress open",
+    "cy:verify": "cypress verify",
+    "ci_cy": "cypress run"
   },
   "eslintConfig": {
     "extends": "react-app"
