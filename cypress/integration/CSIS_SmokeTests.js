@@ -3,7 +3,7 @@
 let cyEnv = Cypress.env();
 Cypress.config('baseUrl', cyEnv.baseUrl);
 
-describe('Login Test', function() {
+describe('csis smoke tests', function() {
 	beforeEach(() => {
 		console.log('Cypress.env(baseUrl)', Cypress.env('baseUrl'));
 
@@ -27,7 +27,7 @@ describe('Login Test', function() {
 		cy.get('.ui-dialog-buttonset > :nth-child(2)').click({ force: true });
 		cy.get('.field--name-field-image > img').should('exist');
 	});
-	it.only('test the Screenshot-Button via Route', function() {
+	it('test the Screenshot-Button via Route', function() {
 		cy.visit('/study/1/step/2/view/maps');
 		cy.wait(3000);
 		cy.get('p > .btn').click({ force: true });

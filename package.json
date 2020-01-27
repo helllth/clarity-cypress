@@ -17,7 +17,7 @@
     "eject": "react-scripts eject",
     "cy": "$(npm bin)/cypress open",
     "cy:verify": "cypress verify",
-    "ci_cy": "cypress run"
+    "cy:ci": "cypress run"
   },
   "eslintConfig": {
     "extends": "react-app"
