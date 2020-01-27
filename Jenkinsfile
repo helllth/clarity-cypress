@@ -51,7 +51,7 @@ pipeline {
         echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
         // sh 'npm ci'
         sh 'mkdir -p /tmp/.cache/Cypress'
-        sh 'CYPRESS_CACHE_FOLDER: "/tmp/.cache/Cypress"  yarn install --frozen-lockfile'
+        sh 'CYPRESS_CACHE_FOLDER= "/tmp/.cache/Cypress"  yarn install --frozen-lockfile'
         //sh 'npm run cy:verify'
       }
     }
