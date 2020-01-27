@@ -52,14 +52,14 @@ pipeline {
         echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
         // sh 'npm ci'
         sh 'export HOME=/var/jenkins_home/'
-        sh 'CYPRESS_CACHE_FOLDER="/tmp/.cache/Cypress"  yarn install --frozen-lockfile'
+        sh 'yarn install --frozen-lockfile'
         //sh 'npm run cy:verify'
       }
     }
     stage('run Cypress tests') {
       steps {
         echo "Running build ${env.BUILD_ID}"
-        sh "CYPRESS_CACHE_FOLDER: '/tmp/.cache/Cypress'  yarn run ci_cy"
+        sh "yarn run ci_cy"
       }
     }
   }
