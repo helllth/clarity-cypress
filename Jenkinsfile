@@ -38,7 +38,7 @@ pipeline {
     // this image provides everything needed to run Cypress
     docker {
       image 'cypress/base:10'//cismet/cypress-base-10-with-jenkins-user:1.0'
-      args '-e HOME=/var/jenkins_home/ -e baseUrl="https://csis.myclimateservice.eu/" -e user="demo"'
+      args '-e HOME=/var/jenkins_home/ -e CYPRESS_baseUrl="https://csis.myclimateservice.eu/" -e CYPRESS_user="demo"'
     }
   }
 
