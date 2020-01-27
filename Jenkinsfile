@@ -52,7 +52,8 @@ pipeline {
         echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
         // sh 'npm ci'
         // sh 'export HOME=/var/jenkins_home/'
-        sh 'export CYPRESS_CACHE_FOLDER=cache/Cypress'
+        sh 'cd && pwd'
+
         sh 'yarn install --frozen-lockfile'       
         sh 'yarn run cy:verify'
       }
